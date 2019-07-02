@@ -12,6 +12,7 @@
 
 # idea folder
 .idea/
+**/target/
 
 # idea project file
 **/*.iml

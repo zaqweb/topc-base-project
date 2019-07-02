@@ -13,13 +13,14 @@
 	<name>Topc Base Project</name>
 	<description>Topc Base Project</description>
 	<properties>
-
-		<main.basedir>${basedir}/..</main.basedir>
-
+		<reversion>1.0.0</reversion>
+		<main.basedir>${basedir}</main.basedir>
 	</properties>
 
 	<modules>
-        <module>topc-base-dependencies</module>
-    </modules>
+		<module>topc-base-dependencies</module>
+		<module>topc-base-web-parent</module>
+		<module>topc-base-web-commons</module>
+	</modules>
 </project>
 
