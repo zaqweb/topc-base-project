@@ -1,4 +1,4 @@
-package co.topc.web.commons.Constants;
+package co.topc.web.commons.constants;
 
 /**
  * @author zaqweb
