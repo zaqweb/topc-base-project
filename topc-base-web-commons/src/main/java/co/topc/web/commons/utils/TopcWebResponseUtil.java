@@ -1,6 +1,6 @@
 package co.topc.web.commons.utils;
 
-import co.topc.web.commons.Constants.TopcWebResponseEnum;
+import co.topc.web.commons.constants.TopcWebResponseEnum;
 import co.topc.web.commons.TopcWebResponse;
 
 /**
