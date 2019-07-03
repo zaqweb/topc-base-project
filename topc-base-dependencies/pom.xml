@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>topc-base-dependencies</artifactId>
-    <version>${reversion}</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <licenses>
         <license>
