@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>topc-base-dependencies</artifactId>
-    <version>${reversion}</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <licenses>
         <license>
@@ -32,6 +32,7 @@
     <properties>
         <main.basedir>${basedir}/..</main.basedir>
         <fastjson.version>1.2.58</fastjson.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
         <spring.boot>2.1.6.RELEASE</spring.boot>
         <spring.framework.core>5.1.8.RELEASE</spring.framework.core>
         <snakeyaml.version>1.24</snakeyaml.version>
@@ -126,7 +127,11 @@
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring.framework.core}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring.boot}</version>
+            </dependency>
             <!-- spring dependencies end-->
 
             <dependency>
@@ -151,7 +156,11 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
