@@ -4,7 +4,10 @@ import org.apache.commons.lang3.time.DateUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Topc 日期工具类
@@ -26,9 +29,11 @@ public final class TopcDateUtils extends DateUtils {
     public static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE_TIME_CH_FORMAT = "yyyy年MM月dd日 HH:mm:ss";
     public static final String TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss.S";
+    public static final String FULL_TIME_PATTERN = "yyyyMMddHHmmss";
 
     public static final String DAYTIME_START = "00:00:00";
     public static final String DAYTIME_END = "23:59:59";
+
 
     private static final String[] FORMATS = {"yyyy-MM-dd HH:mm", "yyyy-MM-dd HH:mm:ss",
             "yyyy-MM-dd HH:mm:ss.S", "yyyy/MM/dd HH:mm:ss", "yyyy年MM月dd日 HH:mm:ss",
@@ -79,6 +84,26 @@ public final class TopcDateUtils extends DateUtils {
      */
     public static Date timeMillisToDate(Long timeMillis) {
         return new Date(timeMillis);
+    }
+
+    public static String formatFullTime(LocalDateTime localDateTime) {
+        return formatFullTime(localDateTime, FULL_TIME_PATTERN);
+    }
+
+    public static String formatFullTime(LocalDateTime localDateTime, String pattern) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern);
+        return localDateTime.format(dateTimeFormatter);
+    }
+
+    private static String getDateFormat(Date date, String dateFormatType) {
+        SimpleDateFormat simformat = new SimpleDateFormat(dateFormatType);
+        return simformat.format(date);
+    }
+
+    public static String formatCSTTime(String date, String format) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+        Date d = sdf.parse(date);
+        return getDateFormat(d, format);
     }
 
     public static void main(String[] args) {

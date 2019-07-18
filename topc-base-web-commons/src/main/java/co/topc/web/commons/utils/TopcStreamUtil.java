@@ -10,8 +10,8 @@ import java.util.stream.Stream;
  * @author RuntimeExcepti0n
  * @date 2019/7/6 11:15
  */
-public final class StreamUtil {
-    private StreamUtil() {
+public final class TopcStreamUtil {
+    private TopcStreamUtil() {
     }
 
     /**
