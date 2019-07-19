@@ -43,6 +43,7 @@
         <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
         <maybatis.pagehelper.start>1.2.12</maybatis.pagehelper.start>
+        <json.web.token>0.9.1</json.web.token>
     </properties>
 
     <dependencyManagement>
@@ -160,6 +161,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${json.web.token}</version>
             </dependency>
         </dependencies>
 
