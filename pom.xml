@@ -21,6 +21,8 @@
 		<module>topc-base-dependencies</module>
 		<module>topc-base-web-parent</module>
 		<module>topc-base-web-commons</module>
+		<module>topc-base-web-exceptions</module>
+		<module>topc-base-web-auth</module>
 	</modules>
 </project>
 
