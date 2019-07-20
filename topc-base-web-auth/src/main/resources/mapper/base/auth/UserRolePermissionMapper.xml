@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.topc.base.auth.mapper.IUserRolePermissionMapper">
+    <resultMap id="roleMap" type="co.topc.base.auth.entity.Role">
+        <id column="pk_id" jdbcType="VARCHAR" property="pkId"/>
+        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="is_deleted" jdbcType="VARCHAR" property="isDeleted"/>
+    </resultMap>
+
+    <resultMap id="menu" type="co.topc.base.auth.entity.Menu">
+        <id column="pk_id" jdbcType="VARCHAR" property="pkId"/>
+        <result column="menu_id" jdbcType="VARCHAR" property="menuId"/>
+        <result column="menu_name" jdbcType="VARCHAR" property="menuName"/>
+        <result column="parent_id" jdbcType="VARCHAR" property="parentId"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="perms" jdbcType="VARCHAR" property="perms"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="type" jdbcType="CHAR" property="type"/>
+        <result column="order_num" jdbcType="BIGINT" property="orderNum"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="is_deleted" jdbcType="VARCHAR" property="isDeleted"/>
+    </resultMap>
+
+    <select id="findUserRole" resultMap="roleMap">
+        select r.*
+        from t_iems_auth_role r
+        left join t_iems_auth_user_role ur on (r.role_id = ur.role_id)
+        left join t_iems_auth_user u on (u.user_id = ur.user_id)
+        where u.user_name = #{userName}
+    </select>
+
+    <select id="findUserPermissions" resultMap="menu">
+        select distinct m.perms
+        from t_iems_auth_role r
+        left join t_iems_auth_user_role ur on (r.role_id = ur.role_id)
+        left join t_iems_auth_user u on (u.user_id = ur.user_id)
+        left join t_iems_auth_role_menu rm on (rm.role_id = r.role_id)
+        left join t_iems_auth_menu m on (m.menu_id = rm.menu_id)
+        where u.user_name = #{userName}
+        and m.perms is not null
+        and m.perms &lt;&gt; ''
+    </select>
+
+</mapper>
