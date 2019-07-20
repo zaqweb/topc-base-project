@@ -22,6 +22,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <apache.shiro.spring>1.4.0</apache.shiro.spring>
+        <auth0.jwt>3.4.1</auth0.jwt>
     </properties>
 
     <dependencyManagement>
@@ -30,6 +32,27 @@
                 <groupId>co.topc.base</groupId>
                 <artifactId>topc-base-web-commons</artifactId>
                 <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>co.topc.base</groupId>
+                <artifactId>topc-base-web-exceptions</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>co.topc.base</groupId>
+                <artifactId>topc-base-web-auth</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <!-- shiro -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${apache.shiro.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${auth0.jwt}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
