@@ -31,4 +31,9 @@ public final class TopcWebResponseUtil {
     return new TopcWebResponse(
             TopcWebResponseEnum.FAILURE_NOT_FOUND.getCode(), TopcWebResponseEnum.FAILURE_NOT_FOUND.getMessage(), "");
   }
+
+  public static TopcWebResponse getFailResult(String  resultCode,String message,Object data){
+    TopcWebResponse resultInfo = new TopcWebResponse(resultCode,message,data);
+    return  resultInfo;
+  }
 }
