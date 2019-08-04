@@ -1,5 +1,7 @@
 package co.topc.web.commons;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import java.io.Serializable;
 
 /**
@@ -10,15 +12,20 @@ import java.io.Serializable;
  */
 public final class TopcWebResponse implements Serializable {
 
+  public interface WebResponse{};
   /** 响应码，仅000000表示成功 */
+  @JsonView(TopcWebResponse.WebResponse.class)
   private String code;
   /** 响应说明 */
+  @JsonView(TopcWebResponse.WebResponse.class)
   private String message;
 
   /** 响应数据 */
+  @JsonView(TopcWebResponse.WebResponse.class)
   private Object data;
 
   public TopcWebResponse(String code, String message, Object data) {
+
       this.code = code;
       this.message = message;
       this.data = data;
