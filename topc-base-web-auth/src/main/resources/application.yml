@@ -53,6 +53,6 @@ auth:
         num: 1000
   shiro:
     # 后端免认证接口 url
-    anonUrl: /login,/logout/**,/regist,/user/check/**
+    anonUrl: /login,/logout/**,/regist,/user/check/**,/auth/login
     # token有效期，单位秒
     jwtTimeOut: 3600

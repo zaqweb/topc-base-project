@@ -1,6 +1,7 @@
 package co.topc.base.auth.service;
 
 import co.topc.base.auth.entity.User;
+import co.topc.base.auth.entity.UserExample;
 import co.topc.base.auth.entity.req.QueryRequest;
 import com.github.pagehelper.Page;
 
@@ -92,4 +93,13 @@ public interface IUserService {
      * @param usernames 用户集合
      */
     void resetPassword(String[] usernames) throws Exception;
+
+    /**
+     * 根据用户密码匹配用户记录
+     * @param userName
+     * @param Password
+     * @return 符合条件的用户对象
+     * @throws Exception
+     */
+    User findByUserNamePassword(String userName, String Password) throws Exception;
 }

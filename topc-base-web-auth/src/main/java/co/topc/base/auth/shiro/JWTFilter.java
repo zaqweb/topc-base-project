@@ -1,5 +1,7 @@
-package co.topc.base.auth.authentication;
+package co.topc.base.auth.shiro;
 
+import co.topc.base.auth.AuthConstant;
+import co.topc.base.auth.authentication.JWTUtil;
 import co.topc.web.commons.constants.TopcStringConstant;
 import co.topc.base.auth.common.util.SpringContextUtil;
 import co.topc.base.auth.common.util.TopcAuthUtil;
@@ -25,8 +27,6 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
 
     private static Logger logger = LoggerFactory.getLogger(JWTFilter.class);
 
-    private static final String TOKEN = "Authentication";
-
     private AntPathMatcher pathMatcher = new AntPathMatcher();
 
     @Override
@@ -51,22 +51,21 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
     @Override
     protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
         HttpServletRequest req = (HttpServletRequest) request;
-        String token = req.getHeader(TOKEN);
+        String token = req.getHeader(AuthConstant.AUTHENTICATE_HEADER);
         return token != null;
     }
 
     @Override
     protected boolean executeLogin(ServletRequest request, ServletResponse response) {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        String token = httpServletRequest.getHeader(TOKEN);
-        JWTToken jwtToken = new JWTToken(TopcAuthUtil.decryptToken(token));
-        try {
-            getSubject(request, response).login(jwtToken);
-            return true;
-        } catch (Exception e) {
-            logger.error(e.getMessage());
+        String token = httpServletRequest.getHeader(AuthConstant.AUTHENTICATE_HEADER);
+        //token合法性验证
+//        if(!JWTUtil.verify())
+        if (JWTUtil.isTokenExpired(token)) {
             return false;
         }
+        //token 未过期返回ture
+        return true;
     }
 
     /**

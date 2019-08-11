@@ -1,5 +1,8 @@
 package co.topc.base.auth.authentication;
 
+import co.topc.base.auth.shiro.BasicRealm;
+import co.topc.base.auth.shiro.JWTFilter;
+import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.mgt.SecurityManager;
@@ -8,7 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.Filter;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * Shiro 配置类
@@ -41,15 +46,19 @@ public class ShiroConfig {
     public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         // 配置 SecurityManager，并注入 shiroRealm
-        securityManager.setRealm(shiroRealm());
+        List<Realm> realms = new ArrayList<>(3);
+        realms.add(basicRealm());
+        securityManager.setRealms(realms);
         return securityManager;
     }
 
     @Bean
-    public ShiroRealm shiroRealm() {
+    public BasicRealm basicRealm() {
         // 配置 Realm
-        return new ShiroRealm();
+        return new BasicRealm();
     }
+
+
 
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {

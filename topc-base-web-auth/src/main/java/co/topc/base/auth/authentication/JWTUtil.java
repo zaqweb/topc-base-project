@@ -2,12 +2,12 @@ package co.topc.base.auth.authentication;
 
 import co.topc.base.auth.common.util.SpringContextUtil;
 import co.topc.base.auth.properties.AuthProperties;
+import co.topc.web.commons.utils.TopcStringUtils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,22 +62,39 @@ public class JWTUtil {
     /**
      * 生成 token
      *
-     * @param username 用户名
+     * @param pricipal 用户身份
      * @param secret   用户的密码
      * @return token
      */
-    public static String sign(String username, String secret) {
+    public static String sign(String pricipal, String lesseeId, String secret) {
         try {
-            username = StringUtils.lowerCase(username);
+            String username = TopcStringUtils.lowerCase(pricipal);
             Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             Algorithm algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withClaim("username", username)
+                    .withClaim("userName", username)
+                    .withClaim("lesseeId", lesseeId)
                     .withExpiresAt(date)
                     .sign(algorithm);
         } catch (Exception e) {
             logger.error("error：{}", e);
             return null;
         }
+    }
+
+    /**
+     * 判断token是否已经失效
+     */
+    public static boolean isTokenExpired(String token) {
+        Date expiredDate = getExpiredDateFromToken(token);
+        return expiredDate.before(new Date());
+    }
+
+    /**
+     * 从token中获取过期时间
+     */
+    private static Date getExpiredDateFromToken(String token) {
+        DecodedJWT jwt = JWT.decode(token);
+        return jwt.getExpiresAt();
     }
 }

@@ -3,10 +3,13 @@ package co.topc.web.commons.constants;
 /**
  * @author zaqweb
  * @date 2019-07-01 22:12
+ * 0开头表示成功
+ * 1开头表示账号类异常
  */
 public enum TopcWebResponseEnum {
 
     SUCCESS("000000", "成功"),
+    UNKNOWNACCOUNT("100000", "账号或密码不正确"),
     UNAUTHORIZED("401000", "未经授权的请求"),
     SERVER_INTERNAL_ERROR("500000", "系统内部异常"),
     FAILURE("999000", "请求失败"),

@@ -1,6 +1,5 @@
 package co.topc.base.auth.service.impl;
 
-import co.topc.base.auth.authentication.ShiroRealm;
 import co.topc.base.auth.common.util.TopcMD5Util;
 import co.topc.web.commons.constants.TopcStringConstant;
 import co.topc.base.auth.entity.User;
@@ -32,9 +31,6 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IUserRoleService userRoleService;
-
-    @Autowired
-    private ShiroRealm shiroRealm;
 
     @Autowired
     private IUserMapper userMapper;
@@ -128,5 +124,20 @@ public class UserServiceImpl implements IUserService {
     @Override
     public Page<User> findUserDetail(User user, QueryRequest queryRequest) {
         return null;
+    }
+
+    @Override
+    public User findByUserNamePassword(String userName, String password) throws Exception {
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andUserNameEqualTo(userName);
+        criteria.andPasswordEqualTo(password);
+
+        List<User> users = userMapper.selectByExample(userExample);
+        if (CollectionUtils.isNotEmpty(users)) {
+            return users.get(0);
+        } else {
+            return null;
+        }
     }
 }

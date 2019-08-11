@@ -13,6 +13,9 @@ import co.topc.web.commons.utils.TopcDateUtils;
 import co.topc.web.commons.utils.TopcWebResponseUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +47,7 @@ public class LoginController {
             @NotBlank(message = "{required}") String password, HttpServletRequest request) throws Exception {
         username = StringUtils.lowerCase(username);
         password = TopcMD5Util.encrypt(username, password);
+
 
         final String errorMessage = "用户名或密码错误";
         User user = this.userManager.getUser(username);

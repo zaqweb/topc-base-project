@@ -76,6 +76,8 @@ public class User implements Serializable {
 
     private Date LastLoginTime;
 
+    private String lesseeId;
+
     /**
      * 角色 ID
      */
@@ -188,6 +190,14 @@ public class User implements Serializable {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public String getLesseeId() {
+        return lesseeId;
+    }
+
+    public void setLesseeId(String lesseeId) {
+        this.lesseeId = lesseeId;
     }
 
     @Override
