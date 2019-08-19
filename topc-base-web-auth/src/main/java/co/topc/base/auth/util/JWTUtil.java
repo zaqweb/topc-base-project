@@ -1,7 +1,6 @@
-package co.topc.base.auth.authentication;
+package co.topc.base.auth.util;
 
-import co.topc.base.auth.common.util.SpringContextUtil;
-import co.topc.base.auth.properties.AuthProperties;
+import co.topc.base.auth.config.AuthProperties;
 import co.topc.web.commons.utils.TopcStringUtils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

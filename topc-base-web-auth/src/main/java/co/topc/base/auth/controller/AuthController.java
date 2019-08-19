@@ -1,9 +1,9 @@
-package co.topc.base.auth;
+package co.topc.base.auth.controller;
 
-import co.topc.base.auth.authentication.JWTUtil;
-import co.topc.base.auth.common.util.TopcAuthUtil;
-import co.topc.base.auth.common.util.TopcMD5Util;
-import co.topc.base.auth.shiro.BasicLoginParam;
+import co.topc.base.auth.util.AuthConstant;
+import co.topc.base.auth.util.JWTUtil;
+import co.topc.base.auth.util.TopcMD5Util;
+import co.topc.base.auth.config.shiro.BasicLoginParam;
 import co.topc.web.commons.TopcWebResponse;
 import co.topc.web.commons.constants.TopcWebResponseEnum;
 import co.topc.web.commons.utils.TopcWebResponseUtil;
@@ -36,7 +36,6 @@ public class AuthController {
         try {
             sub.login(loginParam);
             topcToken = JWTUtil.sign(sub.getPrincipal().toString(), "Topc000001", loginParam.getPassword());
-//            topcToken = TopcAuthUtil.encryptToken(JWTUtil.sign(sub.getPrincipal().toString(), loginParam.getPassword()));
             response.setHeader(AuthConstant.AUTHENTICATE_HEADER, topcToken);
         } catch (UnknownAccountException ue) {
             return TopcWebResponseUtil.getFailResult(TopcWebResponseEnum.UNKNOWNACCOUNT.getCode(),
@@ -47,17 +46,10 @@ public class AuthController {
         return TopcWebResponseUtil.getSuccess(topcToken);
     }
 
-  public static void main(String[] args) {
-    String ss = "300c3192c586d19ff8a5f479b7d2337604160dcccb2e891c500d4b3555d415582ccc7b1d8739047316f1419e6ab63412e2b994e7c54271fb776ba51d5acd4b91453bce2a95d70b6b04fffbc321013174a5fd94bbc005990c468dc19bd42ca36e343b8d52560348153c50f9f470f85b421a1283d66c85cd5858aaca5c8b163994f7ec10f6ac9173e7";
-
-    System.out.println(TopcAuthUtil.decryptToken(ss));
-
-  }
-
     @RequestMapping("smsLogin")
     public TopcWebResponse smsLogin() {
 
-        return null;
+        return TopcWebResponseUtil.getSuccess("ok");
     }
 
     @RequestMapping("wechatLogin")

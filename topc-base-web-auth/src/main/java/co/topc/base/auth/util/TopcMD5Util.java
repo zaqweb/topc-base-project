@@ -1,4 +1,4 @@
-package co.topc.base.auth.common.util;
+package co.topc.base.auth.util;
 
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
@@ -25,9 +25,4 @@ public class TopcMD5Util {
         return new SimpleHash(ALGORITH_NAME, password, ByteSource.Util.bytes(username.toLowerCase() + password),
                 HASH_ITERATIONS).toHex();
     }
-
-  public static void main(String[] args) {
-    //
-      System.out.print(encrypt("fantao123"));
-  }
 }

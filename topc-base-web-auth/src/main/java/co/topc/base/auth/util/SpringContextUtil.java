@@ -1,4 +1,4 @@
-package co.topc.base.auth.common.util;
+package co.topc.base.auth.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

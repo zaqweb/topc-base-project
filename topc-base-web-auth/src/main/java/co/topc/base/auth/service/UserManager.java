@@ -1,11 +1,11 @@
 package co.topc.base.auth.service;
 
-import co.topc.base.auth.common.util.TopcTreeUtil;
+import co.topc.base.auth.util.TopcTreeUtil;
 import co.topc.base.auth.entity.Menu;
 import co.topc.base.auth.entity.Role;
 import co.topc.base.auth.entity.User;
-import co.topc.base.auth.entity.domain.RouterMeta;
-import co.topc.base.auth.entity.domain.VueRouter;
+import co.topc.base.auth.entity.RouterMeta;
+import co.topc.base.auth.entity.VueRouter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

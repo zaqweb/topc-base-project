@@ -1,8 +1,8 @@
-package co.topc.base.auth.common.util;
+package co.topc.base.auth.util;
 
-import co.topc.base.auth.entity.domain.RouterMeta;
-import co.topc.base.auth.entity.domain.Tree;
-import co.topc.base.auth.entity.domain.VueRouter;
+import co.topc.base.auth.entity.RouterMeta;
+import co.topc.base.auth.entity.Tree;
+import co.topc.base.auth.entity.VueRouter;
 
 import java.util.ArrayList;
 import java.util.List;

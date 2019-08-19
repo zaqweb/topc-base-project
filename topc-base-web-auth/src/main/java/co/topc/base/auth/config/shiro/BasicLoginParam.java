@@ -1,4 +1,4 @@
-package co.topc.base.auth.shiro;
+package co.topc.base.auth.config.shiro;
 
 import org.apache.shiro.authc.AuthenticationToken;
 

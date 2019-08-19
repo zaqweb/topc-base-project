@@ -1,7 +1,7 @@
-package co.topc.base.auth.authentication;
+package co.topc.base.auth.config;
 
-import co.topc.base.auth.shiro.BasicRealm;
-import co.topc.base.auth.shiro.JWTFilter;
+import co.topc.base.auth.config.shiro.AuthenticationFilterConfig;
+import co.topc.base.auth.config.shiro.BasicRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -29,9 +29,9 @@ public class ShiroConfig {
         // 设置 securityManager
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
-        // 在 Shiro过滤器链上加入 JWTFilter
+        // 在 Shiro过滤器链上加入 AuthenticationFilterConfig
         LinkedHashMap<String, Filter> filters = new LinkedHashMap<>();
-        filters.put("jwt", new JWTFilter());
+        filters.put("jwt", new AuthenticationFilterConfig());
         shiroFilterFactoryBean.setFilters(filters);
 
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();

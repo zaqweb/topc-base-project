@@ -1,4 +1,4 @@
-package co.topc.base.auth.common.util;
+package co.topc.base.auth.util;
 
 import co.topc.web.commons.constants.AuthConstant;
 import co.topc.web.commons.constants.TopcStringConstant;

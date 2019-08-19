@@ -1,11 +1,10 @@
-package co.topc.base.auth.shiro;
+package co.topc.base.auth.config.shiro;
 
-import co.topc.base.auth.AuthConstant;
-import co.topc.base.auth.authentication.JWTUtil;
+import co.topc.base.auth.config.AuthProperties;
+import co.topc.base.auth.util.AuthConstant;
+import co.topc.base.auth.util.JWTUtil;
+import co.topc.base.auth.util.SpringContextUtil;
 import co.topc.web.commons.constants.TopcStringConstant;
-import co.topc.base.auth.common.util.SpringContextUtil;
-import co.topc.base.auth.common.util.TopcAuthUtil;
-import co.topc.base.auth.properties.AuthProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
@@ -23,9 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class JWTFilter extends BasicHttpAuthenticationFilter {
+public class AuthenticationFilterConfig extends BasicHttpAuthenticationFilter {
 
-    private static Logger logger = LoggerFactory.getLogger(JWTFilter.class);
+    private static Logger logger = LoggerFactory.getLogger(AuthenticationFilterConfig.class);
 
     private AntPathMatcher pathMatcher = new AntPathMatcher();
 
@@ -59,12 +58,12 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
     protected boolean executeLogin(ServletRequest request, ServletResponse response) {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String token = httpServletRequest.getHeader(AuthConstant.AUTHENTICATE_HEADER);
-        //token合法性验证
-//        if(!JWTUtil.verify())
+        //TO-DO
+        // token合法性验证
+
         if (JWTUtil.isTokenExpired(token)) {
             return false;
         }
-        //token 未过期返回ture
         return true;
     }
 
@@ -93,7 +92,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
         httpResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
         httpResponse.setCharacterEncoding("utf-8");
         httpResponse.setContentType("application/json; charset=utf-8");
-        final String message = "未认证，请在前端系统进行认证";
+        final String message = "您的请求未经认证，请登陆后重新访问。";
         try (PrintWriter out = httpResponse.getWriter()) {
             String responseJson = "{\"message\":\"" + message + "\"}";
             out.print(responseJson);

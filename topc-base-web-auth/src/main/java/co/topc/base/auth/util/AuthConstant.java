@@ -1,4 +1,4 @@
-package co.topc.base.auth;
+package co.topc.base.auth.util;
 
 /**
  * @author zaqweb

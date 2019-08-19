@@ -1,6 +1,4 @@
-package co.topc.base.auth.entity.domain;
-
-import co.topc.base.auth.entity.Menu;
+package co.topc.base.auth.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;

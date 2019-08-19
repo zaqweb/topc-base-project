@@ -1,4 +1,6 @@
-package co.topc.base.auth.shiro;
+package co.topc.base.auth.config.shiro;
+
+import co.topc.base.auth.config.shiro.BasicLoginParam;
 
 /**
  * @author zaqweb

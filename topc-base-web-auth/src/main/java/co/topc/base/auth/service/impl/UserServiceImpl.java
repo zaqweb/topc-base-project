@@ -1,6 +1,6 @@
 package co.topc.base.auth.service.impl;
 
-import co.topc.base.auth.common.util.TopcMD5Util;
+import co.topc.base.auth.util.TopcMD5Util;
 import co.topc.web.commons.constants.TopcStringConstant;
 import co.topc.base.auth.entity.User;
 import co.topc.base.auth.entity.UserExample;

@@ -1,4 +1,4 @@
-package co.topc.base.auth.properties;
+package co.topc.base.auth.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

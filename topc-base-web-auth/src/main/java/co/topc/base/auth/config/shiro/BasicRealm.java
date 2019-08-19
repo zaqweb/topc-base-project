@@ -1,4 +1,4 @@
-package co.topc.base.auth.shiro;
+package co.topc.base.auth.config.shiro;
 
 import co.topc.base.auth.entity.User;
 import co.topc.base.auth.service.IUserService;
@@ -8,7 +8,6 @@ import org.apache.shiro.realm.AuthenticatingRealm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import sun.java2d.pipe.SpanShapeRenderer;
 
 /**
  * @author zaqweb

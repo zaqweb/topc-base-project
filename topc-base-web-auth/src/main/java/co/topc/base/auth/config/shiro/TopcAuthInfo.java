@@ -1,12 +1,10 @@
-package co.topc.base.auth.shiro;
+package co.topc.base.auth.config.shiro;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.MergableAuthenticationInfo;
-import org.apache.shiro.authc.SaltedAuthenticationInfo;
 import org.apache.shiro.subject.MutablePrincipalCollection;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 
 import java.util.Collection;
 import java.util.HashSet;

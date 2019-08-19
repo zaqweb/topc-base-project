@@ -1,4 +1,4 @@
-package co.topc.base.auth.entity.domain;
+package co.topc.base.auth.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

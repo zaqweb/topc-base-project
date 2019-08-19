@@ -1,4 +1,4 @@
-package co.topc.base.auth.properties;
+package co.topc.base.auth.config;
 
 public class ShiroProperties {
 
