@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>co.topc.base</groupId>
+        <artifactId>topc-base-web-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../topc-base-web-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>co.topc.base</groupId>
+    <artifactId>topc-base-web-message</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/topc-co/topc-base-project</url>
+    </scm>
+    <developers>
+        <developer>
+            <name>Eric</name>
+            <email>zaqweb@topc.co</email>
+            <organization>Topc (ShenZhen) Technology co,. LTD</organization>
+            <organizationUrl>https://www.topc.co</organizationUrl>
+        </developer>
+    </developers>
+
+    <properties>
+        <main.basedir>${basedir}/..</main.basedir>
+    </properties>
+</project>
